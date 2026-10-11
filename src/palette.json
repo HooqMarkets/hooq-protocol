@@ -1,0 +1,184 @@
+{
+  "note": "Every literal in tokens.css comes from this file. Measured from pixels in brand/, nothing invented.",
+  "measuredIn": {
+    "primary": "brand/LOGO HOOQ PNG.png",
+    "alphaMask": "brand/LOGO HOOQ PNG...png",
+    "crossCheck": "brand/LOGO HOOQ JPG.jpg.jpeg"
+  },
+  "files": {
+    "brand/LOGO HOOQ PNG.png": {
+      "format": "PNG",
+      "size": "2000x2000",
+      "ihdr": {
+        "bitDepth": 8,
+        "colorType": 6,
+        "colorTypeName": "RGBA",
+        "interlace": 0
+      },
+      "alpha": {
+        "a0": 0,
+        "aPartial": 0,
+        "a255": 4000000
+      }
+    },
+    "brand/LOGO HOOQ PNG...png": {
+      "format": "PNG",
+      "size": "2000x2000",
+      "ihdr": {
+        "bitDepth": 8,
+        "colorType": 6,
+        "colorTypeName": "RGBA",
+        "interlace": 0
+      },
+      "alpha": {
+        "a0": 3314923,
+        "aPartial": 17155,
+        "a255": 667922
+      }
+    },
+    "brand/LOGO HOOQ JPG.jpg.jpeg": {
+      "format": "JPEG baseline",
+      "size": "2000x2000",
+      "components": 3,
+      "alpha": {
+        "a0": 0,
+        "aPartial": 0,
+        "a255": 4000000
+      }
+    }
+  },
+  "colors": [
+    {
+      "token": "--paper",
+      "hex": "#ecebe7",
+      "source": "brand/LOGO HOOQ PNG.png",
+      "method": "modal exact colour of all pixels and all four corners",
+      "pixels": 3315120,
+      "sharePct": 82.878,
+      "bbox": [
+        0,
+        0,
+        1999,
+        1999
+      ]
+    },
+    {
+      "token": "--ink",
+      "hex": "#111111",
+      "source": "brand/LOGO HOOQ PNG.png",
+      "method": "modal exact colour of pixels with max channel under 40 (the H body)",
+      "pixels": 431742,
+      "sharePct": 10.794,
+      "bbox": [
+        558,
+        510,
+        1440,
+        1486
+      ]
+    },
+    {
+      "token": "--c-orange",
+      "hex": "#fd5f1e",
+      "source": "brand/LOGO HOOQ PNG.png",
+      "method": "modal exact colour of the orange wheel segment (saturation over 0.6, hue-binned)",
+      "pixels": 1264,
+      "segmentPixels": 15998,
+      "bbox": [
+        1009,
+        792,
+        1173,
+        943
+      ]
+    },
+    {
+      "token": "--c-yellow",
+      "hex": "#f3b40a",
+      "source": "brand/LOGO HOOQ PNG.png",
+      "method": "modal exact colour of the yellow wheel segment (saturation over 0.6, hue-binned)",
+      "pixels": 2788,
+      "segmentPixels": 16064,
+      "bbox": [
+        826,
+        792,
+        991,
+        943
+      ]
+    },
+    {
+      "token": "--c-green",
+      "hex": "#77b50a",
+      "source": "brand/LOGO HOOQ PNG.png",
+      "method": "modal exact colour of the green wheel segment (saturation over 0.6, hue-binned)",
+      "pixels": 944,
+      "segmentPixels": 15620,
+      "bbox": [
+        894,
+        1057,
+        1105,
+        1166
+      ]
+    },
+    {
+      "token": "--c-blue",
+      "hex": "#1b54fe",
+      "source": "brand/LOGO HOOQ PNG.png",
+      "method": "modal exact colour of the blue wheel segment (saturation over 0.6, hue-binned)",
+      "pixels": 2235,
+      "segmentPixels": 16476,
+      "bbox": [
+        1052,
+        929,
+        1187,
+        1122
+      ]
+    },
+    {
+      "token": "--c-magenta",
+      "hex": "#e6268b",
+      "source": "brand/LOGO HOOQ PNG.png",
+      "method": "modal exact colour of the magenta wheel segment (saturation over 0.6, hue-binned)",
+      "pixels": 2546,
+      "segmentPixels": 16299,
+      "bbox": [
+        812,
+        929,
+        946,
+        1121
+      ]
+    },
+    {
+      "token": "--ring",
+      "hex": "#efeeeb",
+      "source": "brand/LOGO HOOQ PNG...png",
+      "method": "modal exact colour of bright low-saturation pixels inside the wheel disc",
+      "pixels": 135,
+      "bbox": [
+        813,
+        791,
+        1188,
+        1166
+      ]
+    }
+  ],
+  "crossCheck": {
+    "brand/LOGO HOOQ JPG.jpg.jpeg": {
+      "paper": "#ecebe7",
+      "ink": "#111111",
+      "orange": "#fd5f1e",
+      "yellow": "#f2b409",
+      "green": "#77b50a",
+      "blue": "#1b53fe",
+      "magenta": "#e6268b"
+    },
+    "brand/LOGO HOOQ PNG...png": {
+      "paper": "alpha 0 over 3314923 of 4000000 pixels",
+      "ink": "#111111",
+      "orange": "#fd5e1f",
+      "yellow": "#f3b409",
+      "green": "#78b509",
+      "blue": "#1a52fe",
+      "magenta": "#e4268a"
+    }
+  },
+  "derived": "Every other colour in tokens.css is a color-mix or relative-colour derivation of the entries above."
+}

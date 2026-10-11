@@ -1,0 +1,81 @@
+{
+  "records": [
+    {
+      "id": "chain",
+      "label": "Chain",
+      "state": "stated",
+      "value": "Solana",
+      "rpc": "https://solana-rpc.publicnode.com",
+      "source": "client statement",
+      "scope": "batch-level",
+      "checked": "2026-10-11"
+    },
+    {
+      "id": "market",
+      "label": "Market source",
+      "state": "stated",
+      "value": "DexScreener",
+      "url": "https://api.dexscreener.com/token-boosts/top/v1",
+      "pairsUrl": "https://api.dexscreener.com/tokens/v1/solana/{addresses}",
+      "source": "client statement",
+      "scope": "batch-level",
+      "checked": "2026-10-11"
+    },
+    {
+      "id": "ca",
+      "label": "Contract address",
+      "state": "absent",
+      "source": "client statement",
+      "scope": "batch-level",
+      "checked": "2026-10-11"
+    },
+    {
+      "id": "x",
+      "label": "X",
+      "state": "absent",
+      "source": "client statement",
+      "scope": "batch-level",
+      "checked": "2026-10-11"
+    },
+    {
+      "id": "github",
+      "label": "GitHub",
+      "state": "absent",
+      "source": "client statement",
+      "scope": "batch-level",
+      "checked": "2026-10-11"
+    },
+    {
+      "id": "supply",
+      "label": "Supply",
+      "state": "absent",
+      "source": "client statement",
+      "scope": "batch-level",
+      "checked": "2026-10-11"
+    },
+    {
+      "id": "fees",
+      "label": "Fees",
+      "state": "absent",
+      "source": "client statement",
+      "scope": "batch-level",
+      "checked": "2026-10-11"
+    },
+    {
+      "id": "lock",
+      "label": "Liquidity lock",
+      "state": "absent",
+      "source": "client statement",
+      "scope": "batch-level",
+      "checked": "2026-10-11"
+    },
+    {
+      "id": "audit",
+      "label": "Audit",
+      "state": "absent",
+      "source": "client statement",
+      "scope": "batch-level",
+      "checked": "2026-10-11"
+    }
+  ]
+}

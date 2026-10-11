@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HOOQ · programmable pools, Solana-native</title>
+<meta name="description" content="HOOQ is an automated market maker built for Solana. Six sockets surround every market, so builders wire up custom logic without rebuilding anything. Live pulse of busy tokens runs alongside.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HOOQ">
+<meta property="og:url" content="https://hooq.markets/">
+<meta property="og:title" content="HOOQ · programmable pools, Solana-native">
+<meta property="og:description" content="Six sockets per market. Wire up modules your market needs.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" sizes="32x32" href="./favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&amp;family=Geist+Mono:wght@400;500&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&amp;family=Geist+Mono:wght@400;500&amp;display=swap"></noscript>
+<script>
+(function () {
+  var d = document.documentElement;
+  d.classList.add('js');
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    d.classList.add('anim');
+    setTimeout(function () { if (!window.__hooq) d.classList.remove('anim'); }, 4000);
+  }
+})();
+</script>
+<link rel="stylesheet" href="./tokens.css">
+<link rel="stylesheet" href="./styles.css">
+<noscript><style>[data-reveal]{opacity:1 !important;transform:none !important}</style></noscript>
+</head>
+<body>
+<div class="progress" aria-hidden="true"><i data-progress></i></div>
+
+<header class="top">
+  {{ca}}
+  <div class="nav">
+    <div class="nav-in">
+      <a class="brand" href="#top" aria-label="HOOQ, top of page">
+        {{brand_mark}}
+        <span>HOOQ</span>
+      </a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#how">Path</a><a href="#modules">Modules</a><a href="#pulse">Pulse</a><a href="#gauges">Gauges</a><a href="#road">Roadmap</a><a href="#build">Build</a>
+      </nav>
+      <div class="nav-right">
+        <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav" data-burger><span></span><span></span></button>
+        <div class="socials">{{social}}</div>
+      </div>
+    </div>
+    <nav class="mnav" id="mnav" aria-label="Sections, mobile" hidden>
+      <a href="#how">Path</a><a href="#modules">Modules</a><a href="#pulse">Pulse</a><a href="#gauges">Gauges</a><a href="#road">Roadmap</a><a href="#build">Build</a>
+    </nav>
+  </div>
+</header>
+
+<div class="tape" role="region" aria-label="Live ticker" data-market="{{market_state}}">
+  <div class="tape-tag"><span class="dot" aria-hidden="true"></span><span data-status-text>Syncing</span></div>
+  <div class="tape-view"><div class="tape-track" data-tape></div></div>
+</div>
+
+<main id="top">
+<section class="hero" aria-labelledby="h1">
+  <div class="mesh" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="hero-copy">
+    <div class="mono-label" data-reveal>hooq.markets · {{chain}}</div>
+    <h1 class="display" id="h1" data-reveal>Your pool.<br>Your rules.<br>Wired in.</h1>
+    <p class="lede" data-reveal>HOOQ is an automated market maker built for {{chain}}. Liquidity gets packed into tight price bands, and six sockets surround every market. Wire up modules you want; your market behaves as you decided.</p>
+    <div class="row-btns" data-reveal>
+      <a class="b b-ink" href="#how">Explore the sockets</a>
+      <a class="b b-line" href="#pulse">Watch the pulse</a>
+    </div>
+    <div class="hint" data-reveal><span class="hint-dot" aria-hidden="true"></span><span>Hover a tag, or tap one, to see what that socket carries.</span></div>
+  </div>
+
+  <div class="hero-stage" data-stage aria-label="Pool rack drawing, six sockets, cables dangling underneath">
+    <svg class="stage-svg" viewBox="0 0 560 720" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Pool rack illustration">
+      <defs>
+        <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" class="dotfill"/></pattern>
+      </defs>
+      <g data-depth="0.25"><rect x="-60" y="-40" width="680" height="800" fill="url(#dots)"/><circle cx="280" cy="330" r="270" class="ring"/><circle cx="280" cy="330" r="205" class="ring"/></g>
+      <g data-depth="0.55">
+        <rect class="rack" x="90" y="60" width="380" height="470" rx="36"/>
+        <image href="./assets/hooq-mark.png" x="147" y="12" width="266" height="266" preserveAspectRatio="xMidYMid meet" aria-hidden="true"/>
+        <rect class="rack-strip" x="120" y="232" width="320" height="8" rx="4"/>
+        <g class="jacks">
+          <g class="jack" data-jack="0"><circle class="jack-o" cx="170" cy="310" r="28"/><circle class="jack-i" cx="170" cy="310" r="11"/></g>
+          <g class="jack" data-jack="1"><circle class="jack-o" cx="390" cy="310" r="28"/><circle class="jack-i" cx="390" cy="310" r="11"/></g>
+          <g class="jack" data-jack="2"><circle class="jack-o" cx="170" cy="395" r="28"/><circle class="jack-i" cx="170" cy="395" r="11"/></g>
+          <g class="jack" data-jack="3"><circle class="jack-o" cx="390" cy="395" r="28"/><circle class="jack-i" cx="390" cy="395" r="11"/></g>
+          <g class="jack" data-jack="4"><circle class="jack-o" cx="170" cy="480" r="28"/><circle class="jack-i" cx="170" cy="480" r="11"/></g>
+          <g class="jack" data-jack="5"><circle class="jack-o" cx="390" cy="480" r="28"/><circle class="jack-i" cx="390" cy="480" r="11"/></g>
+        </g>
+      </g>
+      <g data-depth="0.95" class="cables">
+        <g class="sway s0"><path class="cable" data-jack="0" d="M170 310 C 120 400, 70 570, 120 680"/><circle class="plug" data-jack="0" cx="120" cy="680" r="9"/></g>
+        <g class="sway s1"><path class="cable" data-jack="1" d="M390 310 C 470 400, 500 570, 440 692"/><circle class="plug" data-jack="1" cx="440" cy="692" r="9"/></g>
+        <g class="sway s2"><path class="cable" data-jack="2" d="M170 395 C 210 500, 230 600, 200 702"/><circle class="plug" data-jack="2" cx="200" cy="702" r="9"/></g>
+        <g class="sway s3"><path class="cable" data-jack="3" d="M390 395 C 330 500, 320 610, 360 710"/><circle class="plug" data-jack="3" cx="360" cy="710" r="9"/></g>
+        <g class="sway s4"><path class="cable" data-jack="4" d="M170 480 C 150 550, 150 620, 160 692"/><circle class="plug" data-jack="4" cx="160" cy="692" r="9"/></g>
+        <g class="sway s5"><path class="cable" data-jack="5" d="M390 480 C 410 550, 400 620, 400 696"/><circle class="plug" data-jack="5" cx="400" cy="696" r="9"/></g>
+      </g>
+    </svg>
+    <div class="tags" data-tags></div>
+  </div>
+
+  <aside class="readout" data-reveal>
+    <div class="spread"><span class="mono-label">Socket</span>
+      <span class="pill" data-pill><span class="dot" aria-hidden="true"></span><span data-status-text>Syncing</span></span></div>
+    <div class="readout-title"><i data-ro-dot></i><span data-ro-title>Order check</span></div>
+    <p class="readout-text" data-ro-text></p>
+    <ul class="jack-list" data-jack-list></ul>
+    <div class="readout-foot"><span data-ro-foot>Sockets ready</span><span>{{chain}}</span></div>
+  </aside>
+
+  <div class="module-row" data-module-row></div>
+</section>
+
+<section class="sec" id="how">
+  <div class="sec-head" data-reveal>
+    <div class="mono-label">01 · Path</div>
+    <h2 class="h2">Trace one swap from first touch to finish.</h2>
+    <p class="sec-lede">Select any module on this card and scroll on, watching where it steps in. Figures stay blank until confirmed.</p>
+  </div>
+  <div class="trace">
+    <div class="trace-steps">
+      <div class="trace-step on" data-step="0"><div class="mono-label">Step A</div><h3>Order arrives</h3><p>Request lands, and sockets get inspected for anything wired up.</p></div>
+      <div class="trace-step" data-step="1"><div class="mono-label">Step B</div><h3>Order check</h3><p>Wired code may approve, reshape or turn away requests while reserves sit untouched.</p></div>
+      <div class="trace-step" data-step="2"><div class="mono-label">Step C</div><h3>Bands respond</h3><p>Liquidity packed near spot fills requests, nudging price along.</p></div>
+      <div class="trace-step" data-step="3"><div class="mono-label">Step D</div><h3>Settlement logic</h3><p>Later sockets can log fresh prices or route side payments prior to closing.</p></div>
+    </div>
+    <div class="trace-sticky">
+      <div class="card trace-card" data-spot>
+        <div class="seg" role="tablist" aria-label="Module" data-trace-tabs>
+          <button type="button" role="tab" class="on" data-tab="0" aria-selected="true">Bare pool</button>
+          <button type="button" role="tab" data-tab="1" aria-selected="false">Fee rule</button>
+          <button type="button" role="tab" data-tab="2" aria-selected="false">Opening cap</button>
+          <button type="button" role="tab" data-tab="3" aria-selected="false">Price log</button>
+        </div>
+        <svg class="trace-svg" viewBox="0 0 680 190" role="img" aria-label="Route one swap takes across pool internals">
+          <path class="tl" d="M60 95 H620"/>
+          <path class="tl-on" data-trace-line d="M60 95 H60"/>
+          <g class="tn" data-node="0"><circle cx="60" cy="95" r="16"/><text x="60" y="140" text-anchor="middle">Order</text></g>
+          <g class="tn" data-node="1"><circle cx="247" cy="95" r="16"/><text x="247" y="140" text-anchor="middle">Before</text></g>
+          <g class="tn" data-node="2"><circle cx="433" cy="95" r="16"/><text x="433" y="140" text-anchor="middle">Bands</text></g>
+          <g class="tn" data-node="3"><circle cx="620" cy="95" r="16"/><text x="620" y="140" text-anchor="middle">After</text></g>
+          <circle class="wire" data-wire cx="247" cy="55" r="9"/>
+        </svg>
+        <dl class="receipt" data-receipt></dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="modules">
+  <div class="sec-head" data-reveal>
+    <div class="mono-label">02 · Modules</div>
+    <h2 class="h2">Snap on whatever pools require.</h2>
+    <p class="sec-lede">Modules slide into sockets and cooperate within a single market. Each card below is placeholder text awaiting confirmed settings.</p>
+  </div>
+  <div class="mods">
+    <article class="mod" style="--c: var(--c-orange)" data-reveal data-spot><header><i></i> Opening cap <span class="mono-label">socket · order check</span></header><div class="mod-big mod-pend">pending</div><p>Restricts early trading volume right after launch, so first orders cannot sweep liquidity instantly.</p><div class="meter"><b></b></div></article>
+    <article class="mod" style="--c: var(--c-yellow)" data-reveal data-spot><header><i></i> Adaptive fee <span class="mono-label">socket · fee</span></header><div class="mod-big mod-pend">pending</div><p>Lets fees climb or fall alongside recent price swings, rather than sitting flat.</p><div class="meter"><b></b></div></article>
+    <article class="mod" style="--c: var(--c-blue)" data-reveal data-spot><header><i></i> Price log <span class="mono-label">socket · price feed</span></header><div class="mod-big mod-pend">pending</div><p>Records a rolling price average that lenders and other programs may query.</p><div class="meter"><b></b></div></article>
+    <article class="mod" style="--c: var(--c-magenta)" data-reveal data-spot><header><i></i> Maker share <span class="mono-label">socket · settlement</span></header><div class="mod-big mod-pend">pending</div><p>Routes a slice of swap fees toward whoever created that pool.</p><div class="meter"><b></b></div></article>
+  </div>
+</section>
+
+<section class="sec" id="pulse">
+  <div class="sec-head" data-reveal>
+    <div class="mono-label">03 · Pulse</div>
+    <h2 class="h2">Meanwhile, the {{chain}} pulse.</h2>
+    <p class="sec-lede">Live strip of busiest boosted tokens across {{chain}}, ranked by daily volume. It keeps running regardless of which pool details are confirmed.</p>
+  </div>
+  <div class="statline" data-reveal>
+    <div data-spot><span class="lbl">Tokens shown</span><div class="v num" data-stat="count">–</div></div>
+    <div data-spot><span class="lbl">Combined volume</span><div class="v num" data-stat="volume">–</div></div>
+    <div data-spot><span class="lbl">Combined depth</span><div class="v num" data-stat="liquidity">–</div></div>
+    <div data-spot><span class="lbl">Advancing</span><div class="v num" data-stat="adv">–</div></div>
+  </div>
+  <div class="card clock" data-reveal data-spot>
+    <div class="lc-top">
+      <div><span class="lbl">token</span><div class="lc-time" data-ck-sym>–</div></div>
+      <div class="lc-price"><span class="lbl">day volume</span><b class="num" data-ck-vol>–</b></div>
+      <div class="lc-price"><span class="lbl">depth</span><b class="num" data-ck-liq>–</b></div>
+    </div>
+    <div class="lc-chart"><svg viewBox="0 0 680 190" aria-hidden="true" preserveAspectRatio="none"><path class="area" data-ck-area d=""/><path class="ln ln-v" data-ck-line-v d=""/><path class="ln ln-d" data-ck-line-d d=""/><line class="cur" data-ck-cur x1="0" x2="0" y1="0" y2="190"/></svg><span class="pt" data-ck-pt></span></div>
+    <label class="lbl" for="ck">Slide across the ranked rows</label>
+    <input id="ck" class="slider" type="range" min="1" max="10" step="1" value="1" data-ck-slider>
+    <div class="lc-legend"><span><i class="k"></i>day volume</span><span><i class="b"></i>depth</span></div>
+  </div>
+  <div class="card board" data-reveal>
+    <div class="card-h">
+      <b>{{chain}} boosts</b>
+      <div class="row">
+        <span class="pill" data-pill><span class="dot" aria-hidden="true"></span><span data-status-text>Syncing</span></span>
+        <div class="seg sm" role="group" aria-label="Sort order" data-sort>
+          <button type="button" class="on" data-key="volume" aria-pressed="true">Volume</button>
+          <button type="button" data-key="change" aria-pressed="false">Move</button>
+          <button type="button" data-key="liquidity" aria-pressed="false">Depth</button>
+        </div>
+      </div>
+    </div>
+    <div class="tbl-wrap">
+      <table class="tbl stack" data-board>
+        <thead><tr><th>#</th><th>Token</th><th class="r">Price</th><th class="r">24h</th><th class="r">Volume</th><th class="r">Depth</th><th class="r">Address</th></tr></thead>
+        <tbody data-rows></tbody>
+      </table>
+    </div>
+    <div class="note-line" data-note role="status" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="sec" id="scope">
+  <div class="sec-head" data-reveal>
+    <div class="mono-label">04 · Scope</div>
+    <h2 class="h2">What flows through, what gets skipped.</h2>
+    <p class="sec-lede">Narrow by design. Whatever cannot be priced through trading pairs never earns a row.</p>
+  </div>
+  <div class="coins">
+    <div class="coin-col" data-reveal data-spot>
+      <div class="mono-label col-h">counted</div>
+      <div class="coin-row ok"><span class="plug-ico" aria-hidden="true"></span><div><b>Boosted {{chain}} tokens</b><span>pulled from boost list</span></div><em>Each address appears once, even when boosted repeatedly.</em></div>
+      <div class="coin-row ok"><span class="plug-ico" aria-hidden="true"></span><div><b>Tokens owning trading pairs</b><span>priced by genuine trading</span></div><em>Price plus move originate from deepest pair.</em></div>
+      <div class="coin-row ok"><span class="plug-ico" aria-hidden="true"></span><div><b>Multi-pair tokens</b><span>volume and depth added up</span></div><em>Daily volume totals every pair found.</em></div>
+    </div>
+    <div class="coin-col" data-reveal data-spot>
+      <div class="mono-label col-h">skipped</div>
+      <div class="coin-row no"><span class="plug-ico" aria-hidden="true"></span><div><b>Other chains</b><span>cut at filter</span></div><em>Only {{chain}} entries survive.</em></div>
+      <div class="coin-row no"><span class="plug-ico" aria-hidden="true"></span><div><b>Tokens lacking pairs</b><span>nothing to price</span></div><em>No pair, no row, regardless of boost volume.</em></div>
+      <div class="coin-row no"><span class="plug-ico" aria-hidden="true"></span><div><b>Anything beyond ten</b><span>under cutoff</span></div><em>Lower ranks never reach table.</em></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="gauges">
+  <div class="sec-head" data-reveal>
+    <div class="mono-label">05 · Gauges</div>
+    <h2 class="h2">Four dials across one shared ten.</h2>
+    <p class="sec-lede">Each dial gets computed from rows above, locally in your browser. Nothing hidden feeds them.</p>
+  </div>
+  <div class="mods">
+    <article class="mod" style="--c: var(--c-orange)" data-reveal data-spot><header><i></i> Turnover <span class="mono-label">volume ÷ depth</span></header><div class="mod-big num" data-gauge="turn">–</div><p>Shows how hard pooled money works. Higher readings mean thinner cushions beneath trades.</p><div class="meter"><b data-meter="turn"></b></div></article>
+    <article class="mod" style="--c: var(--c-green)" data-reveal data-spot><header><i></i> Breadth <span class="mono-label">advancing share</span></header><div class="mod-big num" data-gauge="breadth">–</div><p>Portion of listed tokens that finished the day higher. A fast mood check.</p><div class="meter"><b data-meter="breadth"></b></div></article>
+    <article class="mod" style="--c: var(--c-blue)" data-reveal data-spot><header><i></i> Lead share <span class="mono-label">top volume</span></header><div class="mod-big num" data-gauge="lead">–</div><p>Slice of combined volume owned by row one. Fat slices mean one name dominates.</p><div class="meter"><b data-meter="lead"></b></div></article>
+    <article class="mod" style="--c: var(--c-magenta)" data-reveal data-spot><header><i></i> Median move <span class="mono-label">middle row</span></header><div class="mod-big num" data-gauge="median">–</div><p>The middle day change across the ten. Calmer than any average swayed by extremes.</p><div class="meter"><b data-meter="median"></b></div></article>
+  </div>
+</section>
+
+<section class="sec split" id="spot">
+  <div class="sec-head" data-reveal>
+    <div class="mono-label">06 · Spotlight</div>
+    <h2 class="h2">One token, held up close.</h2>
+    <p class="sec-lede">Walk down the board, inspecting names one by one on a single card. The bar shows how large each volume looms across the group.</p>
+    <ul class="ticks"><li>Tilts with your pointer</li><li>One tap copies token addresses</li><li>Tracks identical live rows</li></ul>
+  </div>
+  <div class="nft-stage" data-reveal>
+    <article class="nft" data-tilt data-spot>
+      <div class="nft-top"><span class="lock on" data-sp-rank>–</span><span class="lock">{{chain}}</span></div>
+      <div class="sp-id"><span class="ticon lg" data-sp-logo></span><div class="nft-name"><b data-sp-name>–</b><span data-sp-sub>–</span></div></div>
+      <div class="nft-pair" data-sp-sym>–</div>
+      <div class="range"><div class="range-bar"><b data-sp-bar></b></div><div class="range-labels"><span class="mono-label">volume share</span><span class="mono-label num" data-sp-share>–</span></div></div>
+      <dl class="nft-dl"><div><dt>price</dt><dd class="num" data-sp-price>–</dd></div><div><dt>24h</dt><dd class="num" data-sp-change>–</dd></div><div><dt>depth</dt><dd class="num" data-sp-liq>–</dd></div></dl>
+    </article>
+    <div class="nft-actions">
+      <button class="b b-line sm" type="button" data-sp-prev aria-label="Previous token">Back</button>
+      <button class="b b-ink sm" type="button" data-sp-copy data-copy="" data-idle="Copy address"><span data-fb>Copy address</span></button>
+      <button class="b b-line sm" type="button" data-sp-next aria-label="Next token">Next</button>
+    </div>
+    <div class="nft-msg" data-sp-msg></div>
+  </div>
+</section>
+
+<section class="sec split" id="lens">
+  <div class="sec-head" data-reveal>
+    <div class="mono-label">07 · Depth filter</div>
+    <h2 class="h2">Choose your floor and see who clears it.</h2>
+    <p class="sec-lede">Slide the bar to demand more pooled money behind each name. The count below follows your pick as you drag.</p>
+  </div>
+  <div class="card caps-card" data-reveal data-spot>
+    <div class="caps-row"><div><span class="lbl">floor</span><b class="num" data-lens-floor>–</b></div><div><span class="lbl">clearing</span><b class="num" data-lens-count>–</b></div></div>
+    <label class="lbl" for="floor">Depth floor</label>
+    <input id="floor" class="slider" type="range" min="0" max="100" step="1" value="0" data-lens-slider>
+    <div class="cap-track"><b data-lens-fill></b></div>
+    <div class="verdict" data-lens-verdict>Waiting for rows.</div>
+  </div>
+</section>
+
+<section class="sec" id="road">
+  <div class="sec-head" data-reveal>
+    <div class="mono-label">08 · Roadmap</div>
+    <h2 class="h2">Four phases, one slot each.</h2>
+    <p class="sec-lede">Facts still unconfirmed stay empty and say so. Each one fills in once a statement lands.</p>
+  </div>
+  <div class="flow">
+    <div class="flow-step" style="--c: var(--c-orange)" data-reveal data-spot><div class="flow-n mono-label">01</div><h3>Signal</h3><p>Live board, ticker and dials go public and stay open for everyone.</p></div>
+    <div class="flow-step" style="--c: var(--c-yellow)" data-reveal data-spot><div class="flow-n mono-label">02</div><h3>Contract</h3><p>Address gets announced once, then stays pinned across page tops.</p></div>
+    <div class="flow-step" style="--c: var(--c-green)" data-reveal data-spot><div class="flow-n mono-label">03</div><h3>Liquidity</h3><p>Pool details and lock terms get published with proof beside them.</p></div>
+    <div class="flow-step" style="--c: var(--c-blue)" data-reveal data-spot><div class="flow-n mono-label">04</div><h3>Community</h3><p>Channels open, and source code goes public for scrutiny.</p></div>
+  </div>
+  <ul class="recs" data-reveal>{{pending}}</ul>
+</section>
+
+<section class="sec split" id="build">
+  <div class="sec-head" data-reveal>
+    <div class="mono-label">09 · Build</div>
+    <h2 class="h2">Rebuild this feed with minimal code.</h2>
+    <p class="sec-lede">The pulse needs no key and no backend. Two calls form its entire data layer, served by {{market_name}}.</p>
+    <div class="row-btns"><a class="b b-ink" href="#pulse">Return to pulse</a></div>
+  </div>
+  <div class="code-card" data-reveal>
+    <div class="seg dark sm" role="tablist" aria-label="Snippet" data-code-tabs>
+      <button type="button" role="tab" class="on" data-code="0" aria-selected="true">Boosts</button>
+      <button type="button" role="tab" data-code="1" aria-selected="false">Pairs</button>
+    </div>
+    <pre><code data-code-body></code></pre>
+  </div>
+</section>
+
+<section class="closing">
+  <h2 class="display" data-reveal>Get hooked.</h2>
+  <div class="row-btns" data-reveal><a class="b b-ink" href="#how">Explore the sockets</a><a class="b b-line" href="#top">Back to top</a></div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="foot-in"><span class="brand-sm">HOOQ</span><span>hooq.markets</span><span>Quotes by {{market_name}}. Information only, never advice.</span><a class="foot-link" href="#top">Top</a></div>
+</footer>
+
+<script type="application/json" id="register">{{register_json}}</script>
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

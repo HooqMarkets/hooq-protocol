@@ -1,0 +1,12 @@
+{
+  "name": "hooq",
+  "version": "0.1.0",
+  "private": true,
+  "description": "HOOQ - a live board for boosted Solana tokens.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "build": "node build.mjs",
+    "gates": "node gates.mjs"
+  }
+}

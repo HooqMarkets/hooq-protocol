@@ -1,0 +1,77 @@
+/* The only file allowed to hold colour literals.
+   Base colours are measured from pixels in brand/ (see palette.json for source, method and pixel counts).
+   Everything below the base block is derived from them by mixing. Nothing is invented. */
+:root {
+  --paper: #ecebe7;
+  --ink: #111111;
+  --ring: #efeeeb;
+  --c-orange: #fd5f1e;
+  --c-yellow: #f3b40a;
+  --c-green: #77b50a;
+  --c-blue: #1b54fe;
+  --c-magenta: #e6268b;
+
+  /* surfaces */
+  --paper-2: color-mix(in oklab, var(--paper) 93%, var(--ink));
+  --paper-3: color-mix(in oklab, var(--paper) 86%, var(--ink));
+  --card: var(--ring);
+  --card-2: color-mix(in oklab, var(--ring) 55%, var(--paper));
+  --veil: color-mix(in srgb, var(--paper) 82%, transparent);
+
+  /* text and lines */
+  --ink-hover: color-mix(in oklab, var(--ink) 88%, var(--paper));
+  --ink-2: color-mix(in oklab, var(--ink) 74%, var(--paper));
+  --ink-3: color-mix(in oklab, var(--ink) 60%, var(--paper));
+  --rule: color-mix(in oklab, var(--ink) 13%, var(--paper));
+  --rule-2: color-mix(in oklab, var(--ink) 26%, var(--paper));
+
+  /* brand hues, tinted and shaded for text-safe use */
+  --on-up: color-mix(in oklab, var(--c-green) 52%, var(--ink));
+  --on-down: color-mix(in oklab, var(--c-magenta) 62%, var(--ink));
+  --tint-orange: color-mix(in oklab, var(--c-orange) 24%, var(--paper));
+  --tint-yellow: color-mix(in oklab, var(--c-yellow) 28%, var(--paper));
+  --tint-green: color-mix(in oklab, var(--c-green) 26%, var(--paper));
+  --tint-blue: color-mix(in oklab, var(--c-blue) 18%, var(--paper));
+  --tint-magenta: color-mix(in oklab, var(--c-magenta) 20%, var(--paper));
+
+  /* code card */
+  --code-bg: var(--ink);
+  --code-ink: var(--paper);
+  --code-dim: color-mix(in oklab, var(--paper) 55%, var(--ink));
+  --code-key: var(--c-yellow);
+  --code-str: color-mix(in oklab, var(--c-blue) 40%, var(--paper));
+
+  /* effects */
+  --spot: color-mix(in srgb, var(--ring) 78%, transparent);
+  --spot-row: color-mix(in srgb, var(--ring) 62%, transparent);
+  --flash: color-mix(in srgb, var(--ink) 16%, transparent);
+  --flash-up: color-mix(in srgb, var(--c-green) 38%, transparent);
+  --flash-down: color-mix(in srgb, var(--c-magenta) 30%, transparent);
+  --skel-a: var(--paper-2);
+  --skel-b: color-mix(in oklab, var(--paper-2) 50%, var(--ring));
+  --live: var(--c-green);
+  --live-ring: color-mix(in srgb, var(--c-green) 45%, transparent);
+  --ring-soft: color-mix(in srgb, var(--ink) 18%, transparent);
+  --mesh-a: color-mix(in srgb, var(--c-yellow) 34%, transparent);
+  --mesh-b: color-mix(in srgb, var(--c-magenta) 20%, transparent);
+  --mesh-c: color-mix(in srgb, var(--c-blue) 22%, transparent);
+  --mesh-d: color-mix(in srgb, var(--c-orange) 26%, transparent);
+  --edge: color-mix(in srgb, var(--ink) 8%, transparent);
+  --shadow: 0 1px 0 color-mix(in srgb, var(--ink) 4%, transparent), 0 30px 60px -40px color-mix(in srgb, var(--ink) 35%, transparent);
+  --shadow-lift: 0 1px 0 color-mix(in srgb, var(--ink) 5%, transparent), 0 40px 80px -36px color-mix(in srgb, var(--ink) 40%, transparent), 0 0 0 1px color-mix(in srgb, var(--ink) 4%, transparent);
+  --shadow-tag: 0 1px color-mix(in srgb, var(--ink) 6%, transparent), 0 6px 18px -8px color-mix(in srgb, var(--ink) 25%, transparent);
+  --shadow-tag-hi: 0 1px color-mix(in srgb, var(--ink) 6%, transparent), 0 10px 22px -8px color-mix(in srgb, var(--ink) 30%, transparent);
+  --shadow-nft: 0 1px var(--ring) inset, 0 50px 80px -40px color-mix(in srgb, var(--ink) 45%, transparent), 0 0 0 1px color-mix(in srgb, var(--ink) 6%, transparent);
+  --shadow-code: 0 40px 80px -50px color-mix(in srgb, var(--ink) 60%, transparent);
+  --nft-a: var(--ring);
+  --nft-b: var(--card-2);
+  --nft-c: var(--paper-3);
+}
+
+/* Lift the card a touch above the paper where relative colour syntax exists. */
+@supports (color: oklch(from red l c h)) {
+  :root {
+    --card: oklch(from var(--paper) calc(l + 0.03) c h);
+    --ring-lit: oklch(from var(--paper) calc(l + 0.045) c h);
+  }
+}
